@@ -58,7 +58,7 @@ def part2():
     mask1 = ''.zfill(36)
     mask0 = ''.zfill(36)
     for inst in input:
-        print("inst: ", inst)
+        # print("inst: ", inst)
         if inst.split(' ')[0] == 'mask':
             mask = inst.split(' ')[-1]
             # print("new mask: ", mask)
@@ -89,7 +89,7 @@ def part2():
             # print("newReg", newReg)
             mem[int(newReg, 2)] = int(val)
     
-    print(len(mem.values()))
+    # print(len(mem.values()))
     return sum(mem.values())
         
 
