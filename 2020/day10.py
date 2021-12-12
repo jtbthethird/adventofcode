@@ -2,6 +2,8 @@ import template
 import copy
 import re
 
+
+
 filename="input10.txt"
 # filename="testinput10.txt"
 
