@@ -25,6 +25,12 @@ def printMatrix(matrix, joiner=''):
     # fmt = '\t'.join('{{:{}}}'.format(x) for x in lens)
     # table = [fmt.format(*row) for row in s]
     # print('\n'.join(table))
+    
+def make2dArray(x_size, y_size, fill=0):
+    return [ [fill]*x_size for i in range(y_size) ]
+    
+def make3dArray(x_size, y_size, z_size, fill=0):
+    return [ [ [fill]*x_size for i in range(y_size) ] for j in range(z_size)]
 
 def getInput(year, day):
     pass
