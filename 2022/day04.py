@@ -10,7 +10,7 @@ import os
 from collections import Counter
 from os import path
 
-day = "03"
+day = "04"
 
 filename="input_"+str(day)+".txt"
 # filename="test_"+str(day)+".txt"
@@ -23,6 +23,9 @@ input = []
 with open(filepath) as f:
     input = [l.strip() for l in f.readlines()] # One entry for each line
     
+    assignments = [[[int(v) for v in e.split('-')] for e in line.split(',')] for line in input]
+    # print(assignments)
+            
     # input = ["" if x == '' else int(x) for x in input]
     # input = utils.split_list(input, "")
     # input = [x for x in input]
@@ -33,37 +36,21 @@ with open(filepath) as f:
 
 
 def part1():
-    alph = string.ascii_lowercase + string.ascii_uppercase
-    s = 0
-    for line in input:
-        half = int(len(line)/2)
-        first = set([x for x in line[:half]])
-        second = set([x for x in line[half:]])
-        d = first.intersection(second)
-        c = next(iter(d))
-        o = alph.index(c) + 1
-        # print(d, c, o)
-        s += o
-    return s
-
+    total = 0
+    for pair in assignments:
+        [a, b] = pair
+        if (a[0] >= b[0] and a[1] <= b[1]) or (a[0] <= b[0] and a[1] >= b[1]):
+            total += 1
+    return total
     
     
 def part2():
-    alph = '0' + string.ascii_lowercase + string.ascii_uppercase
-
-
-    outs = []
-    for i in range(0, len(input), 3):
-        a = set([x for x in input[i]])
-        b = set([x for x in input[i+1]])
-        c = set([x for x in input[i+2]])
-        
-        i = next(iter(a.intersection(b).intersection(c)))
-        # print(i)
-        outs.append(i)
-
-    
-    return sum([alph.index(x) for x in outs])
+    total = 0
+    for pair in assignments:
+        [a, b] = pair
+        if (a[0] <= b[1] and a[1] >= b[0]):
+            total += 1
+    return total
 
 
 # --- #
