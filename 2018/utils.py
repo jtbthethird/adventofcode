@@ -1,7 +1,5 @@
 from time import time, strftime, localtime
 from datetime import timedelta
-import copy
-import os
 
 # filename = "input4.txt"
 # filename = "testinput4.txt"
@@ -31,23 +29,8 @@ def printMatrix(matrix, joiner=''):
 def make2dArray(x_size, y_size, fill=0):
     return [ [fill]*x_size for i in range(y_size) ]
     
-def expand2dArray(arr, left_pad, right_pad, up_pad, down_pad, fill=0):
-    out = copy.copy(arr)
-    if left_pad > 0 or right_pad > 0:
-        for y, row in enumerate(arr):
-            out[y] = [fill]*left_pad + row + [fill]*right_pad
-            
-    if up_pad > 0 or down_pad > 0:
-        out = [[fill]*len(out[0]) for i in range(up_pad)] + out + [[fill]*len(out[0]) for i in range(down_pad)]
-    
-    return out
-    
 def make3dArray(x_size, y_size, z_size, fill=0):
     return [ [ [fill]*x_size for i in range(y_size) ] for j in range(z_size)]
-
-def clear_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    
 
 def getInput(year, day):
     pass
